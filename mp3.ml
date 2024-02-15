@@ -61,25 +61,12 @@ let rec remove_even list =
     | 0 -> remove_even xs
     | _ -> x :: remove_even xs
 
-(** 8 helper *)
-let rec p_true p l =
-  match l with
-  | [] -> []
-  | x :: xs -> if p l = true then x :: p_true p xs else p_true p xs
-
-(** 8 helper *)
-let rec p_false p l =
-  match l with
-  | [] -> []
-  | x :: xs -> if p l = false then x :: p_false p xs else p_false p xs
-
 (*Problem 8*)
-(** 25 minutes *)
 let rec sift p l = 
-  (
-    p_true  p l,
-    p_false p l
-  )
+        match l with
+        | [] -> ([],[])
+        | x :: xs -> let l,r = sift p xs in
+        if p x then (x :: l,r) else (l,x::r)
 
 (* 9 tr acc *)
 let rec even_count_tr_acc l acc =
