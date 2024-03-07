@@ -3,9 +3,9 @@
 open Common
 
 (* Problem 1 *)
-let rec import_list lst =
-  | [] -> constexp nilconst
-  | (x,y) :: xs -> binopappexp (consop, (binopappexp (commaop, constexp (intconst x), constexp (intconst y))), import_list xs)
+let rec import_list = function
+  | [] -> ConstExp NilConst
+  | (x,y) :: xs -> BinOpAppExp (ConsOp, (BinOpAppExp  (CommaOp, ConstExp (IntConst x), ConstExp (IntConst y))), import_list xs)
 
 (* Problem 2 *)
 let pair_sums = ConstExp (StringConst "Not implemented yet.")
